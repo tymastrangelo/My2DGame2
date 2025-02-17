@@ -288,170 +288,88 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     //FOR FULL SCREEN (FIRST DRAW TO TEMP SCREEN INSTEAD OF JPANEL)
-    public void drawToTempScreen()
-    {
-
+    public void drawToTempScreen() {
         System.out.println("🎮 Rendering frame...");
-
+    
         if (g2 == null) {
             System.out.println("🚨 Graphics2D is NULL! Rendering failed.");
             return;
         }
-
+    
         // Fill screen with RED for debugging
         g2.setColor(Color.RED);
         g2.fillRect(0, 0, screenWidth, screenHeight);
         System.out.println("✅ Red background drawn!");
-
+    
         // Draw debug text
         g2.setColor(Color.WHITE);
         g2.setFont(new Font("Arial", Font.BOLD, 20));
         g2.drawString("DEBUG: Screen Rendering", 50, 50);
         System.out.println("✅ Debug text drawn!");
-
-        //DEBUG
-        long drawStart = 0;
-        if(keyH.showDebugText == true)
-        {
-            drawStart = System.nanoTime();
-        }
-
-        //TITLE SCREEN
-        if(gameState == titleState)
-        {
+    
+        // ✅ TITLE SCREEN - Only draw the UI
+        if (gameState == titleState) {
             ui.draw(g2);
-        }
-        //MAP SCREEN
-        else if(gameState == mapState)
-        {
+        } 
+        // ✅ MAP SCREEN - Draw map screen
+        else if (gameState == mapState) {
             map.drawFullMapScreen(g2);
-        }
-        //OTHERS
-        else
-        {
-            //TILE
+        } 
+        // ✅ GAMEPLAY - Draw everything else
+        else {
             System.out.println("🔍 Drawing tiles...");
             tileM.draw(g2);
             System.out.println("✅ Tiles drawn!");
-
-            //INTERACTIVE TILE
-            for(int i = 0; i < iTile[1].length; i++)
-            {
-                if(iTile[currentMap][i] != null)
-                {
+    
+            // Draw interactive tiles
+            for (int i = 0; i < iTile[1].length; i++) {
+                if (iTile[currentMap][i] != null) {
                     iTile[currentMap][i].draw(g2);
                 }
             }
-
-            //ADD ENTITIES TO THE LIST
-            //PLAYER
-            entityList.add(player);
-
-            //NPCs
-            for(int i = 0; i < npc[1].length; i++)
-            {
-                if(npc[currentMap][i] != null)
-                {
-                    entityList.add(npc[currentMap][i]);
-                }
-            }
-
-            //OBJECTS
-            for(int i = 0; i < obj[1].length; i++)
-            {
-                if(obj[currentMap][i] != null)
-                {
-                    entityList.add(obj[currentMap][i]);
-                }
-            }
-
-            //MONSTERS
-            for(int i = 0; i < monster[1].length; i++)
-            {
-                if(monster[currentMap][i] != null)
-                {
-                    entityList.add(monster[currentMap][i]);
-                }
-            }
-
-            //PROJECTILES
-            for(int i = 0; i < projectile[1].length; i++)
-            {
-                if(projectile[currentMap][i] != null)
-                {
-                    entityList.add(projectile[currentMap][i]);
-                }
-            }
-
-            //PARTICLES
-            for(int i = 0; i < particleList.size(); i++)
-            {
-                if(particleList.get(i) != null)
-                {
-                    entityList.add(particleList.get(i));
-                }
-            }
-
-            //SORT
-            Collections.sort(entityList, new Comparator<Entity>() {
-                @Override
-                public int compare(Entity e1, Entity e2) {
-                    int result = Integer.compare(e1.worldY, e2.worldY);   // result returns : (x=y : 0, x>y : >0, x<y : <0)
-                    return result;
-                }
-            });
-
-            //DRAW ENTITIES
-            for(int i = 0; i < entityList.size(); i++)
-            {
-                entityList.get(i).draw(g2);
-            }
-
-            //EMPTY ENTITY LIST
+    
+            // ADD ENTITIES TO LIST
+            entityList.add(player);  // ✅ Only added when NOT on title screen
+    
+            for (int i = 0; i < npc[1].length; i++)
+                if (npc[currentMap][i] != null) entityList.add(npc[currentMap][i]);
+    
+            for (int i = 0; i < obj[1].length; i++)
+                if (obj[currentMap][i] != null) entityList.add(obj[currentMap][i]);
+    
+            for (int i = 0; i < monster[1].length; i++)
+                if (monster[currentMap][i] != null) entityList.add(monster[currentMap][i]);
+    
+            for (int i = 0; i < projectile[1].length; i++)
+                if (projectile[currentMap][i] != null) entityList.add(projectile[currentMap][i]);
+    
+            for (int i = 0; i < particleList.size(); i++)
+                if (particleList.get(i) != null) entityList.add(particleList.get(i));
+    
+            // SORT ENTITIES
+            Collections.sort(entityList, Comparator.comparingInt(e -> e.worldY));
+    
+            // DRAW ENTITIES
+            for (Entity entity : entityList)
+                entity.draw(g2);
+    
+            // CLEAR LIST
             entityList.clear();
-
-            //ENVIRONMENT
+    
+            // DRAW OTHER ELEMENTS
             eManager.draw(g2);
-
-            //MINI MAP
             map.drawMiniMap(g2);
-
-            //CUTSCENE
             csManager.draw(g2);
-
-            //UI
             ui.draw(g2);
-
-            //DEBUG
-
-            if(keyH.showDebugText == true)
-            {
-                long drawEnd = System.nanoTime();
-                long passed = drawEnd - drawStart;
-
-                g2.setFont(new Font("Arial", Font.PLAIN,20));
-                g2.setColor(Color.white);
-                int x = 10;
-                int y = 400;
-                int lineHeight = 20;
-
-                g2.drawString("WorldX " + player.worldX,x,y);
-                y+= lineHeight;
-                g2.drawString("WorldY " + player.worldY,x,y);
-                y+= lineHeight;
-                g2.drawString("Col " + (player.worldX + player.solidArea.x) / tileSize,x,y);
-                y+= lineHeight;
-                g2.drawString("Row " + (player.worldY + player.solidArea.y) / tileSize,x,y);
-                y+= lineHeight;
-                g2.drawString("Map " + currentMap,x,y);
-                y+= lineHeight;
-                g2.drawString("Draw time: " + passed,x,y);
-                y+= lineHeight;
-                g2.drawString("God Mode: " + keyH.godModeOn, x, y);
-
+    
+            // ✅ Only draw the player **if not in title screen**
+            if (gameState != titleState) {
+                System.out.println("📌 Attempting to draw player...");
+                player.draw(g2);
             }
         }
     }
+    
     public void drawToScreen()
     {
         Graphics g = getGraphics();
@@ -463,6 +381,9 @@ public class GamePanel extends JPanel implements Runnable{
     
         System.out.println("🖥️ Drawing to screen...");
         g.drawImage(tempScreen, 0, 0,screenWidth2,screenHeight2,null);
+
+        Toolkit.getDefaultToolkit().sync(); 
+
         g.dispose();
     }
     //COMMENTED FOR FULLSCREEN
