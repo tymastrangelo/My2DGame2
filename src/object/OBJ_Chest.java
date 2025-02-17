@@ -14,8 +14,8 @@ public class OBJ_Chest extends Entity {
 
         type = type_obstacle;
         name = objName;
-        image = setup("/res/objects/chest",gp.tileSize,gp.tileSize);
-        image2 = setup("/res/objects/chest_opened",gp.tileSize,gp.tileSize);
+        image = setup("/objects/chest",gp.tileSize,gp.tileSize);
+        image2 = setup("/objects/chest_opened",gp.tileSize,gp.tileSize);
         down1 = image;
         collision = true;
 

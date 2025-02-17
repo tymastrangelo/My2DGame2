@@ -40,17 +40,22 @@ public class UI {
     public UI(GamePanel gp)
     {
         this.gp = gp;
-        try
-        {
-            InputStream is = getClass().getResourceAsStream("/res/font/x12y16pxMaruMonica.ttf");
-            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-            is = getClass().getResourceAsStream("/res/font/Purisa Bold.ttf");
-            purisaB = Font.createFont(Font.TRUETYPE_FONT, is);
-        }
-        catch (FontFormatException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
+        try {
+            InputStream is = getClass().getClassLoader().getResourceAsStream("font/x12y16pxMaruMonica.ttf");
+            if (is == null) {
+                throw new RuntimeException("❌ ERROR: Font x12y16pxMaruMonica.ttf not found!");
+            }
+            maruMonica = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
+        
+            is = getClass().getClassLoader().getResourceAsStream("font/Purisa-Bold.ttf"); // ✅ FIXED PATH
+            if (is == null) {
+                throw new RuntimeException("❌ ERROR: Font Purisa-Bold.ttf not found!");
+            }
+            purisaB = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
+        
+            System.out.println("✅ Fonts loaded successfully!");
+        } catch (Exception e) {
+            System.out.println("❌ ERROR: Font loading failed!");
             e.printStackTrace();
         }
 

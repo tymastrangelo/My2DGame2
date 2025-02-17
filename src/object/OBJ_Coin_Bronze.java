@@ -16,7 +16,7 @@ public class OBJ_Coin_Bronze extends Entity {
         type = type_pickupOnly;
         name = objName;
         value = 30;
-        down1 = setup("/res/objects/coin_bronze", gp.tileSize, gp.tileSize);
+        down1 = setup("/objects/coin_bronze", gp.tileSize, gp.tileSize);
         price = 25;
     }
     public boolean use(Entity entity)

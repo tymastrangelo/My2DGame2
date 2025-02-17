@@ -162,14 +162,14 @@ public class Player extends Entity{
 
     public void getImage()
     {
-            up1 = setup("/res/player/boy_up_1",gp.tileSize,gp.tileSize);
-            up2 = setup("/res/player/boy_up_2",gp.tileSize,gp.tileSize);
-            down1 = setup("/res/player/boy_down_1",gp.tileSize,gp.tileSize);
-            down2 = setup("/res/player/boy_down_2",gp.tileSize,gp.tileSize);
-            left1 = setup("/res/player/boy_left_1",gp.tileSize,gp.tileSize);
-            left2 = setup("/res/player/boy_left_2",gp.tileSize,gp.tileSize);
-            right1 = setup("/res/player/boy_right_1",gp.tileSize,gp.tileSize);
-            right2 = setup("/res/player/boy_right_2",gp.tileSize,gp.tileSize);
+            up1 = setup("/player/boy_up_1",gp.tileSize,gp.tileSize);
+            up2 = setup("/player/boy_up_2",gp.tileSize,gp.tileSize);
+            down1 = setup("/player/boy_down_1",gp.tileSize,gp.tileSize);
+            down2 = setup("/player/boy_down_2",gp.tileSize,gp.tileSize);
+            left1 = setup("/player/boy_left_1",gp.tileSize,gp.tileSize);
+            left2 = setup("/player/boy_left_2",gp.tileSize,gp.tileSize);
+            right1 = setup("/player/boy_right_1",gp.tileSize,gp.tileSize);
+            right2 = setup("/player/boy_right_2",gp.tileSize,gp.tileSize);
     }
     public void getSleepingImage(BufferedImage image)
     {
@@ -186,45 +186,45 @@ public class Player extends Entity{
     {
         if(currentWeapon.type == type_sword)
         {
-            attackUp1 = setup("/res/player/boy_attack_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackUp2 = setup("/res/player/boy_attack_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackDown1 = setup("/res/player/boy_attack_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackDown2 = setup("/res/player/boy_attack_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackLeft1 = setup("/res/player/boy_attack_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackLeft2 = setup("/res/player/boy_attack_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackRight1 = setup("/res/player/boy_attack_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
-            attackRight2 = setup("/res/player/boy_attack_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackUp1 = setup("/player/boy_attack_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackUp2 = setup("/player/boy_attack_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackDown1 = setup("/player/boy_attack_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackDown2 = setup("/player/boy_attack_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackLeft1 = setup("/player/boy_attack_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackLeft2 = setup("/player/boy_attack_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackRight1 = setup("/player/boy_attack_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackRight2 = setup("/player/boy_attack_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
         }
         else if(currentWeapon.type == type_axe)
         {
-            attackUp1 = setup("/res/player/boy_axe_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackUp2 = setup("/res/player/boy_axe_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackDown1 = setup("/res/player/boy_axe_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackDown2 = setup("/res/player/boy_axe_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackLeft1 = setup("/res/player/boy_axe_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackLeft2 = setup("/res/player/boy_axe_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackRight1 = setup("/res/player/boy_axe_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
-            attackRight2 = setup("/res/player/boy_axe_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackUp1 = setup("/player/boy_axe_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackUp2 = setup("/player/boy_axe_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackDown1 = setup("/player/boy_axe_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackDown2 = setup("/player/boy_axe_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackLeft1 = setup("/player/boy_axe_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackLeft2 = setup("/player/boy_axe_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackRight1 = setup("/player/boy_axe_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackRight2 = setup("/player/boy_axe_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
         }
         else if(currentWeapon.type == type_pickaxe)
         {
-            attackUp1 = setup("/res/player/boy_pick_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackUp2 = setup("/res/player/boy_pick_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
-            attackDown1 = setup("/res/player/boy_pick_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackDown2 = setup("/res/player/boy_pick_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
-            attackLeft1 = setup("/res/player/boy_pick_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackLeft2 = setup("/res/player/boy_pick_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
-            attackRight1 = setup("/res/player/boy_pick_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
-            attackRight2 = setup("/res/player/boy_pick_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackUp1 = setup("/player/boy_pick_up_1",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackUp2 = setup("/player/boy_pick_up_2",gp.tileSize, gp.tileSize * 2);         // 16x32 px
+            attackDown1 = setup("/player/boy_pick_down_1",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackDown2 = setup("/player/boy_pick_down_2",gp.tileSize, gp.tileSize * 2);     // 16x32 px
+            attackLeft1 = setup("/player/boy_pick_left_1",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackLeft2 = setup("/player/boy_pick_left_2",gp.tileSize * 2, gp.tileSize);      // 32x16 px
+            attackRight1 = setup("/player/boy_pick_right_1",gp.tileSize * 2, gp.tileSize);    // 32x16 px
+            attackRight2 = setup("/player/boy_pick_right_2",gp.tileSize * 2, gp.tileSize);    // 32x16 px
         }
 
     }
     public void getGuardImage()
     {
-        guardUp = setup("/res/player/boy_guard_up",gp.tileSize,gp.tileSize);
-        guardDown = setup("/res/player/boy_guard_down",gp.tileSize,gp.tileSize);
-        guardLeft = setup("/res/player/boy_guard_left",gp.tileSize,gp.tileSize);
-        guardRight = setup("/res/player/boy_guard_right",gp.tileSize,gp.tileSize);
+        guardUp = setup("/player/boy_guard_up",gp.tileSize,gp.tileSize);
+        guardDown = setup("/player/boy_guard_down",gp.tileSize,gp.tileSize);
+        guardLeft = setup("/player/boy_guard_left",gp.tileSize,gp.tileSize);
+        guardRight = setup("/player/boy_guard_right",gp.tileSize,gp.tileSize);
     }
     public void update() // Runs 60 times every seconds.
     {

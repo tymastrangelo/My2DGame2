@@ -42,38 +42,42 @@ public class Config {
         }
     }
 
-    public void loadConfig()
-    {
+    public void loadConfig() {
         try {
             BufferedReader br = new BufferedReader(new FileReader("config.txt"));
 
             String s = br.readLine();
+            if (s == null || s.trim().isEmpty()) {
+                System.out.println("❌ ERROR: Config file is missing full screen setting!");
+                s = "Off"; // Default to Off
+            }
 
             //Full Screen
-            if(s.equals("On"))
-            {
-                gp.fullScreenOn = true;
-            }
-            if(s.equals("Off"))
-            {
-                gp.fullScreenOn = false;
-            }
+            gp.fullScreenOn = s.equals("On");
 
             //Music Volume
             s = br.readLine();
+            if (s == null || s.trim().isEmpty()) {
+                System.out.println("❌ ERROR: Config file is missing music volume!");
+                s = "5"; // Default volume
+            }
             gp.music.volumeScale = Integer.parseInt(s);
 
             //SE Volume
             s = br.readLine();
+            if (s == null || s.trim().isEmpty()) {
+                System.out.println("❌ ERROR: Config file is missing SE volume!");
+                s = "5"; // Default volume
+            }
             gp.se.volumeScale = Integer.parseInt(s);
 
             br.close();
 
-
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("❌ ERROR: Config file not found! Creating a new one.");
+            saveConfig(); // Create default config
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

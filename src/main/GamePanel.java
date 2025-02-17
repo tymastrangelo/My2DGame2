@@ -186,6 +186,7 @@ public class GamePanel extends JPanel implements Runnable{
             lastTime = currentTime;
             if(delta >= 1)
             {
+                System.out.println("🌀 Game loop running...");
                 update();
                 /*repaint(); COMMENTED FOR FULL SCREEN*/
                 drawToTempScreen(); //FOR FULL SCREEN - Draw everything to the buffered image
@@ -289,6 +290,25 @@ public class GamePanel extends JPanel implements Runnable{
     //FOR FULL SCREEN (FIRST DRAW TO TEMP SCREEN INSTEAD OF JPANEL)
     public void drawToTempScreen()
     {
+
+        System.out.println("🎮 Rendering frame...");
+
+        if (g2 == null) {
+            System.out.println("🚨 Graphics2D is NULL! Rendering failed.");
+            return;
+        }
+
+        // Fill screen with RED for debugging
+        g2.setColor(Color.RED);
+        g2.fillRect(0, 0, screenWidth, screenHeight);
+        System.out.println("✅ Red background drawn!");
+
+        // Draw debug text
+        g2.setColor(Color.WHITE);
+        g2.setFont(new Font("Arial", Font.BOLD, 20));
+        g2.drawString("DEBUG: Screen Rendering", 50, 50);
+        System.out.println("✅ Debug text drawn!");
+
         //DEBUG
         long drawStart = 0;
         if(keyH.showDebugText == true)
@@ -310,7 +330,9 @@ public class GamePanel extends JPanel implements Runnable{
         else
         {
             //TILE
+            System.out.println("🔍 Drawing tiles...");
             tileM.draw(g2);
+            System.out.println("✅ Tiles drawn!");
 
             //INTERACTIVE TILE
             for(int i = 0; i < iTile[1].length; i++)
@@ -433,6 +455,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void drawToScreen()
     {
         Graphics g = getGraphics();
+
+        if (g == null) {
+            System.out.println("🚨 Graphics object is NULL! Cannot draw to screen.");
+            return;
+        }
+    
+        System.out.println("🖥️ Drawing to screen...");
         g.drawImage(tempScreen, 0, 0,screenWidth2,screenHeight2,null);
         g.dispose();
     }
@@ -570,7 +599,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void playMusic(int i)
     {
-        music.setFile(i);
+        music.setFile(i);   
         music.play();
         music.loop();
     }

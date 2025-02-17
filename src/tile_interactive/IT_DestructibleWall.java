@@ -20,7 +20,7 @@ public class IT_DestructibleWall extends InteractiveTile{
         this.worldX = gp.tileSize * col;
         this.worldY = gp.tileSize * row;
 
-        down1 = setup("/res/tiles_interactive/destructiblewall",gp.tileSize,gp.tileSize);
+        down1 = setup("/tiles_interactive/destructiblewall",gp.tileSize,gp.tileSize);
         destructible = true;
         life = 3;
     }

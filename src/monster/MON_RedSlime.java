@@ -41,14 +41,14 @@ public class MON_RedSlime extends Entity {
 
     public void getImage()
     {
-        up1 = setup("/res/redslime_down_1",gp.tileSize,gp.tileSize);
-        up2 = setup("/res/monster/redslime_down_2",gp.tileSize,gp.tileSize);
-        down1 = setup("/res/monster/redslime_down_1",gp.tileSize,gp.tileSize);
-        down2 = setup("/res/monster/redslime_down_2",gp.tileSize,gp.tileSize);
-        left1 = setup("/res/monster/redslime_down_1",gp.tileSize,gp.tileSize);
-        left2 = setup("/res/monster/redslime_down_2",gp.tileSize,gp.tileSize);
-        right1 = setup("/res/monster/redslime_down_1",gp.tileSize,gp.tileSize);
-        right2 = setup("/res/monster/redslime_down_2",gp.tileSize,gp.tileSize);
+        up1 = setup("/monster/redslime_down_1",gp.tileSize,gp.tileSize);
+        up2 = setup("/monster/redslime_down_2",gp.tileSize,gp.tileSize);
+        down1 = setup("/monster/redslime_down_1",gp.tileSize,gp.tileSize);
+        down2 = setup("/monster/redslime_down_2",gp.tileSize,gp.tileSize);
+        left1 = setup("/monster/redslime_down_1",gp.tileSize,gp.tileSize);
+        left2 = setup("/monster/redslime_down_2",gp.tileSize,gp.tileSize);
+        right1 = setup("/monster/redslime_down_1",gp.tileSize,gp.tileSize);
+        right2 = setup("/monster/redslime_down_2",gp.tileSize,gp.tileSize);
     }
     public void setAction()
     {
